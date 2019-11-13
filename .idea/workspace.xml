@@ -2,14 +2,28 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c1971e07-f436-4bd7-a933-ba17e25d9451" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/src/se/nackademin/Database.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/se/nackademin/Question.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/se/nackademin/movie.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/se/nackademin/snakes.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/se/nackademin/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/nackademin/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/se/nackademin/MultiUserHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/nackademin/MultiUserHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/se/nackademin/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/nackademin/Player.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/se/nackademin/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/nackademin/Server.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/se/nackademin/ServerListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/nackademin/ServerListener.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
   </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -55,8 +69,17 @@
       <option name="presentableId" value="Default" />
       <updated>1573467804689</updated>
       <workItem from="1573467807840" duration="1109000" />
-      <workItem from="1573474371235" duration="712000" />
+      <workItem from="1573474371235" duration="4018000" />
+      <workItem from="1573649147909" duration="438000" />
     </task>
+    <task id="LOCAL-00001" summary="Test commit">
+      <created>1573475113307</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1573475113307</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -74,5 +97,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Test commit" />
+    <option name="LAST_COMMIT_MESSAGE" value="Test commit" />
   </component>
 </project>
