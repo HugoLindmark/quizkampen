@@ -2,15 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c1971e07-f436-4bd7-a933-ba17e25d9451" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/se/nackademin/Database.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/se/nackademin/Question.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/se/nackademin/movie.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/se/nackademin/snakes.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/se/nackademin/MultiUserHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/nackademin/MultiUserHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/se/nackademin/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/nackademin/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/se/nackademin/Server.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/nackademin/Server.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/se/nackademin/ServerListener.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/se/nackademin/ServerListener.java" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,11 +18,17 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="1TSyUEbxfbufrS1whqB8BEVXdyH" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
   </component>
@@ -57,6 +55,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.Main" />
+        <item itemvalue="Application.Main" />
+      </list>
+    </recent_temporary>
   </component>
   <component name="SvnConfiguration">
     <configuration />
