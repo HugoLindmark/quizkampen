@@ -18,7 +18,8 @@ public class Database {
     private Question question;
     private Question randomQ;
 
-    private static List<Question> questionList = new ArrayList<>();
+    private static List<Question> movieList = new ArrayList<>();
+    private static List<Question> animalList = new ArrayList<>();
 
     public void readMovieFile(){
 
@@ -36,9 +37,9 @@ public class Database {
                 wrongAnswerThree = reader.readLine();
                 question = new Question(readQuestion,rightAnswer,wrongAnswerOne,
                         wrongAnswerTwo,wrongAnswerThree);
-                questionList.add(question);
+                movieList.add(question);
             }
-            Database.saveList(questionList);
+            Database.saveMovieList(movieList);
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -60,9 +61,9 @@ public class Database {
                 wrongAnswerThree = reader.readLine();
                 question = new Question(readQuestion,rightAnswer,wrongAnswerOne,
                         wrongAnswerTwo,wrongAnswerThree);
-                questionList.add(question);
+                animalList.add(question);
             }
-            Database.saveList(questionList);
+            Database.saveAnimalList(animalList);
         }catch (FileNotFoundException e){
             System.out.println("File not found");
             e.printStackTrace();
@@ -72,16 +73,19 @@ public class Database {
         }
     }
 
-    public static void saveList(List<Question> questionList){
-        Database.questionList = questionList;
+    public static void saveMovieList(List<Question> questionList){
+        Database.movieList = questionList;
     }
 
-    public List<Question>  getQuestionListList(){
-        return questionList;
+    public static void saveAnimalList(List<Question> animalList){
+        Database.animalList = animalList;
     }
 
-    public Question  getRandomQuestion(){
-        randomQ = questionList.get(1);
-        return randomQ;
+    public List<Question>  getMovieList(){
+        return movieList;
+    }
+
+    public List<Question> getAnimalList(){
+        return animalList;
     }
 }
