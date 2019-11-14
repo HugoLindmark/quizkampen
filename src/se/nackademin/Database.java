@@ -1,10 +1,12 @@
 package se.nackademin;
 
+import javax.xml.crypto.Data;
 import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class Database {
@@ -18,7 +20,9 @@ public class Database {
     private Question question;
     private Question randomQ;
 
-    private static List<Question> questionList = new ArrayList<>();
+    private static List<Question> movieList = new ArrayList<>();
+    private static List<Question> animalList = new ArrayList<>();
+    private static List<Question> itList = new ArrayList<>();
 
     public void readMovieFile(){
 
@@ -36,9 +40,9 @@ public class Database {
                 wrongAnswerThree = reader.readLine();
                 question = new Question(readQuestion,rightAnswer,wrongAnswerOne,
                         wrongAnswerTwo,wrongAnswerThree);
-                questionList.add(question);
+                movieList.add(question);
             }
-            Database.saveList(questionList);
+            Database.saveMovieList(movieList);
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -60,9 +64,9 @@ public class Database {
                 wrongAnswerThree = reader.readLine();
                 question = new Question(readQuestion,rightAnswer,wrongAnswerOne,
                         wrongAnswerTwo,wrongAnswerThree);
-                questionList.add(question);
+                animalList.add(question);
             }
-            Database.saveList(questionList);
+            Database.saveAnimalList(animalList);
         }catch (FileNotFoundException e){
             System.out.println("File not found");
             e.printStackTrace();
@@ -72,16 +76,55 @@ public class Database {
         }
     }
 
-    public static void saveList(List<Question> questionList){
-        Database.questionList = questionList;
+    public void readItFile(){
+
+        BufferedReader reader;
+
+        try {
+            String readLine;
+            reader = new BufferedReader(new FileReader("C:\\Users\\hugol\\IdeaProjects\\quizkampenV2\\src\\se\\nackademin\\it.txt"));
+
+            while ((readLine = reader.readLine()) != null){
+                readQuestion = reader.readLine();
+                rightAnswer = reader.readLine();
+                wrongAnswerOne = reader.readLine();
+                wrongAnswerTwo = reader.readLine();
+                wrongAnswerThree = reader.readLine();
+                question = new Question(readQuestion,rightAnswer,wrongAnswerOne,
+                        wrongAnswerTwo,wrongAnswerThree);
+                itList.add(question);
+            }
+            Database.saveAnimalList(itList);
+        }catch (FileNotFoundException e){
+            System.out.println("File not found");
+            e.printStackTrace();
+        }catch (Exception e){
+            System.out.println("Exception E");
+            e.printStackTrace();
+        }
     }
 
-    public List<Question>  getQuestionListList(){
-        return questionList;
+    public static void saveMovieList(List<Question> movieList){
+        Database.movieList = movieList;
     }
 
-    public Question  getRandomQuestion(){
-        randomQ = questionList.get(1);
-        return randomQ;
+    public static void saveAnimalList(List<Question> animalList){
+        Database.animalList = animalList;
+    }
+
+    public static void saveItList(List<Question> itList){
+        Database.itList = itList;
+    }
+
+    public List<Question>  getMovieList(){
+        return movieList;
+    }
+
+    public List<Question> getAnimalList(){
+        return animalList;
+    }
+
+    public List<Question> getItList(){
+        return itList;
     }
 }
