@@ -24,7 +24,7 @@ public class MultiUserHandler implements Runnable{
              ObjectInputStream input = new ObjectInputStream(socket.getInputStream());) {
 
             do {
-                output.writeObject(db.getRandomQuestion());
+                //output.writeObject(db.getRandomQuestion());
 
             } while (input.readObject() != null);
         }catch (Exception e){
