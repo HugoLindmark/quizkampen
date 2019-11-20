@@ -22,42 +22,18 @@ public class Question {
         return question;
     }
 
-    public void setQuestion(String question) {
-        this.question = question;
-    }
-
     public String getRightAnswer() {
         return rightAnswer;
-    }
-
-    public void setRightAnswer(String rightAnswer) {
-        this.rightAnswer = rightAnswer;
     }
 
     public String getWrongAnswerOne() {
         return wrongAnswerOne;
     }
 
-    public void setWrongAnswerOne(String wrongAnswerOne) {
-        this.wrongAnswerOne = wrongAnswerOne;
-    }
-
     public String getWrongAnswerTwo() {
         return wrongAnswerTwo;
     }
-
-    public void setWrongAnswerTwo(String wrongAnswerTwo) {
-        this.wrongAnswerTwo = wrongAnswerTwo;
-    }
-
     public String getWrongAnswerThree() {
         return wrongAnswerThree;
     }
-
-    public void setWrongAnswerThree(String wrongAnswerThree) {
-        this.wrongAnswerThree = wrongAnswerThree;
-    }
-
-
-
 }
