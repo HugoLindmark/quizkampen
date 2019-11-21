@@ -26,7 +26,6 @@ public class Client {
             System.out.println("Show waiting view");
 
             while ((fromServer = (Response) inFromServer.readObject()) != null) {
-                System.out.println("in client "+fromServer);
                 if (fromServer.getCategories() != null) {
                     for (Category c : fromServer.getCategories()) {
                         System.out.println(c.getCategoryType());
