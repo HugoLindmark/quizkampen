@@ -1,6 +1,8 @@
 package se.nackademin;
 
-public class Question {
+import java.io.Serializable;
+
+public class Question implements Serializable {
 
     private String question;
     private String rightAnswer;
