@@ -1,16 +1,18 @@
 package se.nackademin;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Response implements Serializable{
-    private Category[] categories;
+    private List<String> categories;
     private Question question;
     private boolean waitingView;
     private Integer myScore;
     private Integer opponentScore;
 
-    public Response(Category[] array) {
-        this.categories = array;
+    public Response(List<String> categories) {
+        this.categories = categories;
     }
     public Response(Question question) {
         this.question = question;
@@ -23,7 +25,7 @@ public class Response implements Serializable{
         this.opponentScore = opponentScore;
     }
 
-    public Category[] getCategories() {
+    public List<String> getCategories() {
         return categories;
     }
 

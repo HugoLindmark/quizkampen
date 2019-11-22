@@ -24,26 +24,24 @@ public class Client {
             Response fromServer;
 
             System.out.println("Show waiting view");
-
             while ((fromServer = (Response) inFromServer.readObject()) != null) {
-                System.out.println("in client "+fromServer);
                 if (fromServer.getCategories() != null) {
-                    for (Category c : fromServer.getCategories()) {
-                        System.out.println(c.getCategoryType());
+                    for (String s : fromServer.getCategories()) {
+                        System.out.println(s);
                     }
                 }
                 if (fromServer.getQuestion() != null) {
                     System.out.println(fromServer.getQuestion().getQuestion());
                     System.out.println(fromServer.getQuestion().getRightAnswer());
-                    System.out.println(fromServer.getQuestion().getWrongAnswerOne());
-                    System.out.println(fromServer.getQuestion().getWrongAnswerTwo());
-                    System.out.println(fromServer.getQuestion().getWrongAnswerThree());
+                    for (String s : fromServer.getQuestion().getAnswers()) {
+                        System.out.println(s);
+                    }
                 }
                 if (fromServer.getWaitingView()) {
                     System.out.println("showing waiting view");
                 }
                 if (fromServer.getMyScore() != null && fromServer.getOpponentScore() != null) {
-                    System.out.println(fromServer.getMyScore() + " opp:" + fromServer.getOpponentScore());
+                    System.out.println("score " + fromServer.getMyScore() + " opp:" + fromServer.getOpponentScore());
                 }
 
                 if (!fromServer.getWaitingView()) {

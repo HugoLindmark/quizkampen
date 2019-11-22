@@ -1,21 +1,23 @@
 package se.nackademin;
 
-public class Question {
+import java.io.Serializable;
+import java.util.ArrayList;
+
+public class Question implements Serializable {
 
     private String question;
     private String rightAnswer;
-    private String wrongAnswerOne;
-    private String wrongAnswerTwo;
-    private String wrongAnswerThree;
+    private ArrayList<String> answers = new ArrayList<>();
 
 
     public Question(String question, String rightAnswer, String wrongAnswerOne,
                     String wrongAnswerTwo, String wrongAnswerThree) {
         this.question = question;
         this.rightAnswer = rightAnswer;
-        this.wrongAnswerOne = wrongAnswerOne;
-        this.wrongAnswerTwo = wrongAnswerTwo;
-        this.wrongAnswerThree = wrongAnswerThree;
+        answers.add(rightAnswer);
+        answers.add(wrongAnswerOne);
+        answers.add(wrongAnswerTwo);
+        answers.add(wrongAnswerThree);
     }
 
     public String getQuestion() {
@@ -26,14 +28,7 @@ public class Question {
         return rightAnswer;
     }
 
-    public String getWrongAnswerOne() {
-        return wrongAnswerOne;
-    }
-
-    public String getWrongAnswerTwo() {
-        return wrongAnswerTwo;
-    }
-    public String getWrongAnswerThree() {
-        return wrongAnswerThree;
+    public ArrayList<String> getAnswers() {
+        return answers;
     }
 }
