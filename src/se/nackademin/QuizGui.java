@@ -6,17 +6,6 @@ import java.util.ArrayList;
 
 public class QuizGui {
 
-    /**
-     * TODO
-     *
-     * Rundor?
-     *
-     * Respons + responded?
-     *
-     * window exited mode?
-     *
-     */
-
     private JFrame window;
     private JPanel basePanel;
     public JPanel lobbyPanel;
@@ -373,42 +362,5 @@ public class QuizGui {
     /* Resets respons when called */
     private void resetRespons() {
         responded = false;
-    }
-
-    /**
-     * How the gui code will look in client
-     */
-    public static void main(String[] args) {
-        ArrayList <String> cats = new ArrayList<>();  //TODO Exempel lista, byts ut mot klientens lista sen
-        ArrayList <String> alts = new ArrayList<>();  //TODO Exempel lista, byts ut mot klientens lista sen
-
-        String alt1 = "Joker";
-        String alt2 = "Spiderman:Far from home";
-        String alt3 = "Spöket laban";
-        String alt4 = "Morran och tobias";
-
-        alts.add(alt1);
-        alts.add(alt2);
-        alts.add(alt3);
-        alts.add(alt4);
-
-        String cat1 = "Sport";
-        String cat2 = "IT";
-        String cat3 = "Filmer";
-        String cat4 = "Djur";
-
-        cats.add(cat1);
-        cats.add(cat2);
-        cats.add(cat3);
-        cats.add(cat4);
-
-        //Gui code starts here
-        QuizGui gui = new QuizGui();
-
-        gui.setCategories(cats);
-        gui.setQuestion("Vilken film är en DC film?");
-        gui.setCorrectAnswer(alt1);
-        gui.setAnswerAlternatives(alts);
-        gui.setResult(1,0);
     }
 }
