@@ -9,9 +9,7 @@ public class QuizGui {
     /**
      * TODO
      *
-     * Rundor?
-     *
-     * Respons + responded?
+     * Mac knappar
      *
      * window exited mode?
      *
@@ -43,7 +41,6 @@ public class QuizGui {
     private ArrayList<JButton> buttons = new ArrayList<>();
 
     private Font textFont = new Font(Font.MONOSPACED, Font.CENTER_BASELINE, 23);
-    private Font resultFont = new Font(Font.MONOSPACED, Font.CENTER_BASELINE, 110);
 
     private String correctAnswer;
 
@@ -224,7 +221,7 @@ public class QuizGui {
 
         result = new JLabel("Empty", JLabel.CENTER);
         resultPanel.add(result);
-        result.setFont(resultFont);
+        result.setFont(textFont);
         result.setForeground(Color.white);
 
         newGame = new JButton("Starta nytt spel!");
@@ -322,12 +319,20 @@ public class QuizGui {
     }
 
     /**
-     * Merges the score of player one and player two to a string and shows it
-     * @param player1 the score of player 1
-     * @param player2 the score of player 2
+     * Calculates which player has the highest and displays it
+     * @param myScore your score
+     * @param oppentScore the score of the opponent
      */
-    public void setResult(int player1, int player2) {
-        result.setText(player1 + "-" + player2);
+    public void showResult(int myScore, int oppentScore) {
+        if(myScore > oppentScore) {
+            result.setText("You won by " + myScore + "-" + oppentScore + "!");
+        }
+        else if(myScore < oppentScore) {
+            result.setText("You lost by " + oppentScore + "-" + myScore + "!");
+        }
+        else if(myScore == oppentScore) {
+            result.setText("The game is a draw!");
+        }
     }
 
     /**
@@ -409,6 +414,6 @@ public class QuizGui {
         gui.setQuestion("Vilken film är en DC film?");
         gui.setCorrectAnswer(alt1);
         gui.setAnswerAlternatives(alts);
-        gui.setResult(1,0);
+        gui.showResult(3,2);
     }
 }
