@@ -55,25 +55,35 @@ public class GameHandler<T> extends Thread {
     }
 
     private void checkInput(String input) {
-        if (input == null) {
-            System.out.println("No input");
-        }
-        if (input.equals("Filmer")) {
-            Database.readFile(Database.getMoviePath());
-            currentQuestionList = Database.getMovieList();
-            Collections.shuffle(currentQuestionList);
-        } else if (input.equals("Sport")) {
-            Database.readFile(Database.getSportPath());
-            currentQuestionList = Database.getSportList();
-            Collections.shuffle(currentQuestionList);
-        } else if (input.equals("Djur")) {
-            Database.readFile(Database.getAnimalPath());
-            currentQuestionList = Database.getAnimalList();
-            Collections.shuffle(currentQuestionList);
-        } else if (input.equals("IT")) {
-            Database.readFile(Database.getComputerPath());
-            currentQuestionList = Database.getItList();
-            Collections.shuffle(currentQuestionList);
+        try {
+            if (input == null) {
+                System.out.println("No input");
+            }
+            switch (input) {
+                case "Filmer":
+                    Database.readFile(Database.getMoviePath());
+                    currentQuestionList = Database.getMovieList();
+                    Collections.shuffle(currentQuestionList);
+                    break;
+                case "Sport":
+                    Database.readFile(Database.getSportPath());
+                    currentQuestionList = Database.getSportList();
+                    Collections.shuffle(currentQuestionList);
+                    break;
+                case "Djur":
+                    Database.readFile(Database.getAnimalPath());
+                    currentQuestionList = Database.getAnimalList();
+                    Collections.shuffle(currentQuestionList);
+                    break;
+                case "IT":
+                    Database.readFile(Database.getComputerPath());
+                    currentQuestionList = Database.getItList();
+                    Collections.shuffle(currentQuestionList);
+                    break;
+            }
+
+        }catch (NullPointerException e){
+            e.printStackTrace();
         }
     }
 
