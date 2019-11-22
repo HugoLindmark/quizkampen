@@ -54,8 +54,16 @@ public class Player {
         return totalScore;
     }
 
+    public void increaseTotalScore() {
+        totalScore++;
+    }
+
     public int getCurrentScore() {
         return currentScore;
+    }
+
+    public void resetCurrentScore() {
+        currentScore = 0;
     }
 
 
