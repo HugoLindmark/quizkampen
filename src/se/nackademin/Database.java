@@ -34,10 +34,10 @@ public class Database<T> {
 
 
     // Creates filepath for the .txt files we read from to create our Database.
-    private static File moviePath = new File("C:\\Users\\hugol\\IdeaProjects\\quizkampenv3\\src\\se\\nackademin\\movie.txt");
-    private static File animalPath = new File("C:\\Users\\hugol\\IdeaProjects\\quizkampenv3\\src\\se\\nackademin\\snakes.txt");
-    private static File computerPath = new File("C:\\Users\\hugol\\IdeaProjects\\quizkampenv3\\src\\se\\nackademin\\it.txt");
-    private static File sportPath = new File("C:\\Users\\hugol\\IdeaProjects\\quizkampenv3\\src\\se\\nackademin\\sports.txt");
+    private static File moviePath = new File("\\src\\se\\nackademin\\movie.txt");
+    private static File animalPath = new File("\\src\\se\\nackademin\\snakes.txt");
+    private static File computerPath = new File("\\src\\se\\nackademin\\it.txt");
+    private static File sportPath = new File("\\src\\se\\nackademin\\sports.txt");
 
     public static File getMoviePath() {
         return moviePath;
