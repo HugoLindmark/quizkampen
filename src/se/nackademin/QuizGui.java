@@ -319,20 +319,11 @@ public class QuizGui {
     }
 
     /**
-     * Calculates which player has the highest and displays it
-     * @param myScore your score
-     * @param oppentScore the score of the opponent
+     * Shows the result of the game when called
+     * @param gameResult the result of the game
      */
-    public void showResult(int myScore, int oppentScore) {
-        if(myScore > oppentScore) {
-            result.setText("You won by " + myScore + "-" + oppentScore + "!");
-        }
-        else if(myScore < oppentScore) {
-            result.setText("You lost by " + oppentScore + "-" + myScore + "!");
-        }
-        else if(myScore == oppentScore) {
-            result.setText("The game is a draw!");
-        }
+    public void showResult(String gameResult) {
+        result.setText(gameResult);
     }
 
     /**
@@ -414,6 +405,5 @@ public class QuizGui {
         gui.setQuestion("Vilken film är en DC film?");
         gui.setCorrectAnswer(alt1);
         gui.setAnswerAlternatives(alts);
-        gui.showResult(3,2);
     }
 }
