@@ -2,6 +2,8 @@ package se.nackademin;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.ArrayList;
 
 public class QuizGui {
@@ -18,7 +20,6 @@ public class QuizGui {
     private JLabel categoryMessage;
     private JLabel question;
     private JLabel result;
-    private JButton debugButton;
     private JButton cat1;
     private JButton cat2;
     private JButton cat3;
@@ -29,9 +30,6 @@ public class QuizGui {
     private JButton alt4;
     private JButton newGame;
 
-    private JPanel currentPanel;
-    private Client client;
-
     private ArrayList<JButton> buttons = new ArrayList<>();
 
     private Font textFont = new Font(Font.MONOSPACED, Font.CENTER_BASELINE, 23);
@@ -39,35 +37,11 @@ public class QuizGui {
     private String correctAnswer;
 
     private String response;
-    public volatile boolean responded = false;
+    public boolean responded = false;
 
-    private int rounds = 1;
 
-    /* Exits the game panel when a question has been answered after 1 second(1000 millie-seconds) */
-    private Timer answerTimer = new Timer(1000, e-> {
-        if(rounds < 4) {
-            switchPanel(gamePanel, lobbyPanel);
-            rounds++;
-        }
-        else {
-            switchPanel(gamePanel, resultPanel);
-            rounds = 1;
-        }
-        resetButtons();
-        stopTimer();  //Dont repeat task every second
-    });
-
-    /* Stops timer when called */
-    private void stopTimer() {
-        answerTimer.stop();
-    }
-
-    public static void main(String[] args){
-        //QuizGui gui = new QuizGui();
-    }
-    public QuizGui(Client client) {
+    public QuizGui() {
         buildGui();
-        this.client = client;
     }
 
     /* Builds and shows the gui when called */
@@ -91,20 +65,6 @@ public class QuizGui {
         lobbyPanel.add(lobbyMessage);
         lobbyMessage.setFont(textFont);
         lobbyMessage.setForeground(Color.white);
-        currentPanel = lobbyPanel;
-
-        debugButton = new JButton(">");
-        lobbyPanel.add(debugButton, BorderLayout.SOUTH);
-        debugButton.setBackground(lobbyPanel.getBackground());
-        debugButton.setForeground(Color.white);
-        debugButton.addActionListener(e -> {
-            if(rounds == 1) {
-                switchPanel(lobbyPanel, categoryPanel);
-            }
-            else {
-                switchPanel(lobbyPanel, gamePanel);
-            }
-        });
 
         /* Category view */
         categoryPanel = new JPanel();
@@ -128,9 +88,7 @@ public class QuizGui {
         cat1.setBackground(Color.gray);
         cat1.addActionListener( e-> {
             responded = true;
-            client.responded = true;
             response = cat1.getText();
-            switchPanel(categoryPanel, gamePanel);
         });
 
         cat2 = new JButton();
@@ -139,9 +97,7 @@ public class QuizGui {
         cat2.setBackground(Color.gray);
         cat2.addActionListener( e-> {
             responded = true;
-            client.responded = true;
             response = cat2.getText();
-            switchPanel(categoryPanel, gamePanel);
         });
 
         cat3 = new JButton();
@@ -150,9 +106,7 @@ public class QuizGui {
         cat3.setBackground(Color.gray);
         cat3.addActionListener( e-> {
             responded = true;
-            client.responded = true;
             response = cat3.getText();
-            switchPanel(categoryPanel, gamePanel);
         });
 
         cat4 = new JButton();
@@ -161,9 +115,7 @@ public class QuizGui {
         cat4.setBackground(Color.gray);
         cat4.addActionListener( e-> {
             responded = true;
-            client.responded = true;
             response = cat4.getText();
-            switchPanel(categoryPanel, gamePanel);
         });
 
         /* Game view */
@@ -188,7 +140,6 @@ public class QuizGui {
         alt1.setBackground(Color.gray);
         alt1.addActionListener( e-> {
             checkButton(alt1);
-            answerTimer.start();
         });
 
         alt2 = new JButton();
@@ -197,7 +148,6 @@ public class QuizGui {
         alt2.setBackground(Color.gray);
         alt2.addActionListener( e-> {
             checkButton(alt2);
-            answerTimer.start();
         });
 
         alt3 = new JButton();
@@ -206,7 +156,7 @@ public class QuizGui {
         alt3.setBackground(Color.gray);
         alt3.addActionListener(e ->{
             checkButton(alt3);
-            answerTimer.start();
+
         });
 
         alt4 = new JButton();
@@ -215,7 +165,6 @@ public class QuizGui {
         alt4.setBackground(Color.gray);
         alt4.addActionListener( e-> {
             checkButton(alt4);
-            answerTimer.start();
         });
 
         resultPanel = new JPanel();
@@ -233,7 +182,44 @@ public class QuizGui {
         newGame.setForeground(Color.white);
         newGame.setPreferredSize(new Dimension(100, 50));
         newGame.addActionListener(e -> {
-            switchPanel(resultPanel, lobbyPanel);
+            switchTo(lobbyPanel);
+        });
+
+        window.addWindowListener(new WindowListener() {
+            @Override
+            public void windowOpened(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowClosing(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowClosed(WindowEvent e) {
+                //TODO
+            }
+
+            @Override
+            public void windowIconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeiconified(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowActivated(WindowEvent e) {
+
+            }
+
+            @Override
+            public void windowDeactivated(WindowEvent e) {
+
+            }
         });
 
         //Adds the basePanel after initialization
@@ -260,7 +246,7 @@ public class QuizGui {
     }
 
     /* Resets button colors */
-    public void resetButtons() {
+    private void resetButtons() {
         alt1.setBackground(Color.gray);
         alt2.setBackground(Color.gray);
         alt3.setBackground(Color.gray);
@@ -268,18 +254,17 @@ public class QuizGui {
     }
 
     /**
-     * Replaces the current panel with another panel
-     * @param current the current panel
+     * Switches from the current panel to the target panel
      * @param target the panel to show
      */
-    public void switchPanel(JPanel current, JPanel target) {
-        basePanel.remove(current);
+    public void switchTo(JPanel target) {
+        basePanel.removeAll();
         basePanel.add(target);
         basePanel.revalidate();
         basePanel.repaint();
-        basePanel.updateUI();
+       // basePanel.updateUI();
+        resetButtons();
         resetRespons();
-        currentPanel = target;
     }
 
     /**
@@ -288,8 +273,8 @@ public class QuizGui {
      */
     private void checkButton(JButton pressedButton) {
         System.out.println("Answer button has been clicked");
+        responded = true;
         response = pressedButton.getText();
-        client.responded = true;
         if(response.equals(correctAnswer)) {
             pressedButton.setBackground(Color.green.darker());
         }
@@ -308,21 +293,6 @@ public class QuizGui {
         }
     }
 
-    /**
-     * Sets the correct answer to the question
-     * @param answer the correct answer
-     */
-    public void setCorrectAnswer(String answer) {
-        correctAnswer = answer;
-    }
-
-    /**
-     * Sets the current question of the round
-     * @param text the question
-     */
-    public void setQuestion(String text) {
-        question.setText(text);
-    }
 
     /**
      * Shows the result of the game when called
@@ -362,6 +332,30 @@ public class QuizGui {
         }
     }
 
+    /**
+     * Sets the correct answer to the question
+     * @param answer the correct answer
+     */
+    public void setCorrectAnswer(String answer) {
+        correctAnswer = answer;
+    }
+
+    /**
+     * Sets the current question of the round
+     * @param text the question
+     */
+    public void setQuestion(String text) {
+        question.setText(text);
+    }
+
+    /**
+     * Shows the result of the game when called
+     * @param gameResult the result of the game
+     */
+    public void setResult(String gameResult) {
+        result.setText(gameResult);
+    }
+
     /* Returns the players respons to the question */
     public String getResponse() {
         return response;
@@ -375,10 +369,5 @@ public class QuizGui {
     /* Resets respons when called */
     private void resetRespons() {
         responded = false;
-
-    }
-
-    public JPanel getCurrentPanel() {
-        return currentPanel;
     }
 }
