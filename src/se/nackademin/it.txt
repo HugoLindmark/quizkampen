@@ -1,25 +1,30 @@
-Vad står ISP för?
-International Service Provider
-Internet Service Provider
-Internet Service Presenter
-Inget av tidigare alternativ
-Bit står för?
-Binary Digit
-Binary Data
-Binary Deci
-Inget av tidigare alternativ
-Vem utvecklade Java?
-James Gosling
-Bill Gates
-Steve Jobs
-Markus Persson
-Vem är känd för att ha skapat Microsoft?
-Bill Gates
-Markus Persson
-Steve Jobs
-James Gosling
-Från vilket land kommer personerna som utvecklat Spotify?
-Norge
-Danmark
-Finland
-Sverige
+Vad använder du för att "klicka" på skärmen?
+Mus
+CPU
+RAM
+Tangentbord
+Vilken är den mest använda sökmotorn?
+Google
+Yahoo
+Bing
+SOSO
+Vad använder du för att skriva på en dator?
+Tangentbord
+Mus
+ROM
+CPU
+Vad behövs för att ansluta till internet?
+Modem
+Mjukvara
+USB uttag
+CPU
+Vad kallar man en portabel dator?
+Laptop
+Booktop
+Dator
+Xbox
+Vad är korrekt namn för ett antivirus program?
+Norton
+Microsoft
+Apple
+Samsung

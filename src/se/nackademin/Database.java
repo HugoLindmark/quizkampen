@@ -39,6 +39,7 @@ public class Database<T> {
     private static File computerPath = new File("src\\se\\nackademin\\it.txt");
     private static File sportPath = new File("src\\se\\nackademin\\sports.txt");
 
+    // Getters for File paths.
     public static File getMoviePath() {
         return moviePath;
     }
@@ -54,6 +55,7 @@ public class Database<T> {
     public static File getSportPath() {
         return sportPath;
     }
+
 
     /*
         One Method that needs one filepath as parameter.

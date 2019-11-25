@@ -9,9 +9,6 @@ public class Settings {
     private String numberOfRounds;
     private String numberOfQuestions;
 
-    /**
-     * Inhämtar inställningar gällande antal rundor och antal frågor per runda genom .properties-fil
-     */
     public Settings() {
         Properties properties = new Properties();
         try {
