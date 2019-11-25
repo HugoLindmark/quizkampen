@@ -8,15 +8,6 @@ import java.util.ArrayList;
 
 public class QuizGui {
 
-    /**
-     * TODO
-     *
-     * Mac knappar
-     *
-     * window exited mode?
-     *
-     */
-
     private JFrame window;
     private JPanel basePanel;
     public JPanel lobbyPanel;
@@ -40,6 +31,9 @@ public class QuizGui {
     private JButton alt4;
     private JButton newGame;
 
+    private JPanel currentPanel;
+    private Client client;
+
     private ArrayList<JButton> buttons = new ArrayList<>();
 
     private Font textFont = new Font(Font.MONOSPACED, Font.CENTER_BASELINE, 23);
@@ -47,7 +41,7 @@ public class QuizGui {
     private String correctAnswer;
 
     private String response;
-    private boolean responded = false;
+    public volatile boolean responded = false;
 
     private int rounds = 1;
 
@@ -70,8 +64,12 @@ public class QuizGui {
         answerTimer.stop();
     }
 
-    public QuizGui() {
+    public static void main(String[] args){
+        //QuizGui gui = new QuizGui();
+    }
+    public QuizGui(Client client) {
         buildGui();
+        this.client = client;
     }
 
     /* Builds and shows the gui when called */
@@ -95,6 +93,7 @@ public class QuizGui {
         lobbyPanel.add(lobbyMessage);
         lobbyMessage.setFont(textFont);
         lobbyMessage.setForeground(Color.white);
+        currentPanel = lobbyPanel;
 
         debugButton = new JButton(">");
         lobbyPanel.add(debugButton, BorderLayout.SOUTH);
@@ -131,6 +130,7 @@ public class QuizGui {
         cat1.setBackground(Color.gray);
         cat1.addActionListener( e-> {
             responded = true;
+            client.responded = true;
             response = cat1.getText();
             switchTo(gamePanel);
         });
@@ -141,6 +141,7 @@ public class QuizGui {
         cat2.setBackground(Color.gray);
         cat2.addActionListener( e-> {
             responded = true;
+            client.responded = true;
             response = cat2.getText();
             switchTo(gamePanel);
         });
@@ -151,6 +152,7 @@ public class QuizGui {
         cat3.setBackground(Color.gray);
         cat3.addActionListener( e-> {
             responded = true;
+            client.responded = true;
             response = cat3.getText();
             switchTo(gamePanel);
         });
@@ -161,6 +163,7 @@ public class QuizGui {
         cat4.setBackground(Color.gray);
         cat4.addActionListener( e-> {
             responded = true;
+            client.responded = true;
             response = cat4.getText();
             switchTo(gamePanel);
         });
@@ -296,7 +299,7 @@ public class QuizGui {
     }
 
     /* Resets button colors */
-    private void resetButtons() {
+    public void resetButtons() {
         alt1.setBackground(Color.gray);
         alt2.setBackground(Color.gray);
         alt3.setBackground(Color.gray);
@@ -312,7 +315,9 @@ public class QuizGui {
         basePanel.add(target);
         basePanel.revalidate();
         basePanel.repaint();
+        basePanel.updateUI();
         resetRespons();
+        currentPanel = target;
     }
 
     /**
@@ -320,8 +325,9 @@ public class QuizGui {
      * @param pressedButton the pressed button
      */
     private void checkButton(JButton pressedButton) {
-        responded = true;
+        System.out.println("Answer button has been clicked");
         response = pressedButton.getText();
+        client.responded = true;
         if(response.equals(correctAnswer)) {
             pressedButton.setBackground(Color.green.darker());
         }
@@ -416,41 +422,10 @@ public class QuizGui {
     /* Resets respons when called */
     private void resetRespons() {
         responded = false;
+
     }
 
-    /**
-     * How the gui code will look in client
-     */
-    public static void main(String[] args) {
-        ArrayList <String> cats = new ArrayList<>();  //TODO Exempel lista, byts ut mot klientens lista sen
-        ArrayList <String> alts = new ArrayList<>();  //TODO Exempel lista, byts ut mot klientens lista sen
-
-        String alt1 = "Joker";
-        String alt2 = "Spiderman:Far from home";
-        String alt3 = "Spöket laban";
-        String alt4 = "Morran och tobias";
-
-        alts.add(alt1);
-        alts.add(alt2);
-        alts.add(alt3);
-        alts.add(alt4);
-
-        String cat1 = "Sport";
-        String cat2 = "IT";
-        String cat3 = "Filmer";
-        String cat4 = "Djur";
-
-        cats.add(cat1);
-        cats.add(cat2);
-        cats.add(cat3);
-        cats.add(cat4);
-
-        //Gui code starts here
-        QuizGui gui = new QuizGui();
-
-        gui.setCategories(cats);
-        gui.setQuestion("Vilken film är en DC film?");
-        gui.setCorrectAnswer(alt1);
-        gui.setAnswerAlternatives(alts);
+    public JPanel getCurrentPanel() {
+        return currentPanel;
     }
 }
