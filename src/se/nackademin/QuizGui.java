@@ -29,6 +29,9 @@ public class QuizGui {
     private JButton alt4;
     private JButton newGame;
 
+    private JPanel currentPanel;
+    private Client client;
+
     private ArrayList<JButton> buttons = new ArrayList<>();
 
     private Font textFont = new Font(Font.MONOSPACED, Font.CENTER_BASELINE, 23);
@@ -36,7 +39,7 @@ public class QuizGui {
     private String correctAnswer;
 
     private String response;
-    private boolean responded = false;
+    public volatile boolean responded = false;
 
     private int rounds = 1;
 
@@ -59,8 +62,12 @@ public class QuizGui {
         answerTimer.stop();
     }
 
-    public QuizGui() {
+    public static void main(String[] args){
+        //QuizGui gui = new QuizGui();
+    }
+    public QuizGui(Client client) {
         buildGui();
+        this.client = client;
     }
 
     /* Builds and shows the gui when called */
@@ -84,6 +91,7 @@ public class QuizGui {
         lobbyPanel.add(lobbyMessage);
         lobbyMessage.setFont(textFont);
         lobbyMessage.setForeground(Color.white);
+        currentPanel = lobbyPanel;
 
         debugButton = new JButton(">");
         lobbyPanel.add(debugButton, BorderLayout.SOUTH);
@@ -120,6 +128,7 @@ public class QuizGui {
         cat1.setBackground(Color.gray);
         cat1.addActionListener( e-> {
             responded = true;
+            client.responded = true;
             response = cat1.getText();
             switchPanel(categoryPanel, gamePanel);
         });
@@ -130,6 +139,7 @@ public class QuizGui {
         cat2.setBackground(Color.gray);
         cat2.addActionListener( e-> {
             responded = true;
+            client.responded = true;
             response = cat2.getText();
             switchPanel(categoryPanel, gamePanel);
         });
@@ -140,6 +150,7 @@ public class QuizGui {
         cat3.setBackground(Color.gray);
         cat3.addActionListener( e-> {
             responded = true;
+            client.responded = true;
             response = cat3.getText();
             switchPanel(categoryPanel, gamePanel);
         });
@@ -150,6 +161,7 @@ public class QuizGui {
         cat4.setBackground(Color.gray);
         cat4.addActionListener( e-> {
             responded = true;
+            client.responded = true;
             response = cat4.getText();
             switchPanel(categoryPanel, gamePanel);
         });
@@ -248,7 +260,7 @@ public class QuizGui {
     }
 
     /* Resets button colors */
-    private void resetButtons() {
+    public void resetButtons() {
         alt1.setBackground(Color.gray);
         alt2.setBackground(Color.gray);
         alt3.setBackground(Color.gray);
@@ -265,7 +277,9 @@ public class QuizGui {
         basePanel.add(target);
         basePanel.revalidate();
         basePanel.repaint();
+        basePanel.updateUI();
         resetRespons();
+        currentPanel = target;
     }
 
     /**
@@ -273,8 +287,9 @@ public class QuizGui {
      * @param pressedButton the pressed button
      */
     private void checkButton(JButton pressedButton) {
-        responded = true;
+        System.out.println("Answer button has been clicked");
         response = pressedButton.getText();
+        client.responded = true;
         if(response.equals(correctAnswer)) {
             pressedButton.setBackground(Color.green.darker());
         }
@@ -360,5 +375,10 @@ public class QuizGui {
     /* Resets respons when called */
     private void resetRespons() {
         responded = false;
+
+    }
+
+    public JPanel getCurrentPanel() {
+        return currentPanel;
     }
 }

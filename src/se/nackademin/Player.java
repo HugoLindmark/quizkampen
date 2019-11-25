@@ -12,14 +12,14 @@ public class Player {
     private int currentScore = 0;
     private GameHandler gameHandler;
     ObjectOutputStream outToClient;
-    BufferedReader inFormClient;
+    BufferedReader inFromClient;
 
     public Player(Socket socket, GameHandler gameHandler) {
         this.socket = socket;
         this.gameHandler = gameHandler;
         try {
             outToClient = new ObjectOutputStream(socket.getOutputStream());
-            inFormClient = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+            inFromClient = new BufferedReader(new InputStreamReader(socket.getInputStream()));
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }
@@ -38,7 +38,7 @@ public class Player {
     public String readFromClient() {
         String tempLine = null;
         try {
-            tempLine = inFormClient.readLine();
+            tempLine = inFromClient.readLine();
 
             if (tempLine.equalsIgnoreCase("rätt")) {
                 currentScore++;

@@ -2,10 +2,11 @@ package se.nackademin;
 
 import javax.xml.crypto.Data;
 import java.net.Socket;
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class GameHandler<T> extends Thread {
+public class GameHandler <T> extends Thread {
     private int TOTALAMOUNTOFROUNDS;
     private int TOTALAMOUNTOFQUESTIONSPERROUND;
 
@@ -24,6 +25,7 @@ public class GameHandler<T> extends Thread {
 
     public GameHandler(Socket socket1, Socket socket2) {
         isGameOn = true;
+        System.out.println(socket1.getInetAddress().getHostAddress() + " " + socket2.getInetAddress().getHostAddress());
         player1 = new Player(socket1, this);
         player2 = new Player(socket2, this);
         whosTurn = player1;
@@ -31,6 +33,7 @@ public class GameHandler<T> extends Thread {
         TOTALAMOUNTOFQUESTIONSPERROUND = Integer.parseInt(gameSettings.getNumberOfQuestions());
         TOTALAMOUNTOFROUNDS = Integer.parseInt(gameSettings.getNumberOfRounds());
         MaxQuestionsPerGame = ((TOTALAMOUNTOFROUNDS * TOTALAMOUNTOFQUESTIONSPERROUND) * 2);
+        //currentQuestionList = new ArrayList<>();
     }
 
     @Override
@@ -55,25 +58,35 @@ public class GameHandler<T> extends Thread {
     }
 
     private void checkInput(String input) {
-        if (input == null) {
-            System.out.println("No input");
-        }
-        if (input.equals("Filmer")) {
-            Database.readFile(Database.getMoviePath());
-            currentQuestionList = Database.getMovieList();
-            Collections.shuffle(currentQuestionList);
-        } else if (input.equals("Sport")) {
-            Database.readFile(Database.getSportPath());
-            currentQuestionList = Database.getSportList();
-            Collections.shuffle(currentQuestionList);
-        } else if (input.equals("Djur")) {
-            Database.readFile(Database.getAnimalPath());
-            currentQuestionList = Database.getAnimalList();
-            Collections.shuffle(currentQuestionList);
-        } else if (input.equals("IT")) {
-            Database.readFile(Database.getComputerPath());
-            currentQuestionList = Database.getItList();
-            Collections.shuffle(currentQuestionList);
+        try {
+            if (input == null) {
+                System.out.println("No input");
+            }
+            switch (input) {
+                case "Filmer":
+                    Database.readFile(Database.getMoviePath());
+                    currentQuestionList = Database.getMovieList();
+                    Collections.shuffle(currentQuestionList);
+                    break;
+                case "Sport":
+                    Database.readFile(Database.getSportPath());
+                    currentQuestionList = Database.getSportList();
+                    Collections.shuffle(currentQuestionList);
+                    break;
+                case "Djur":
+                    Database.readFile(Database.getAnimalPath());
+                    currentQuestionList = Database.getAnimalList();
+                    Collections.shuffle(currentQuestionList);
+                    break;
+                case "IT":
+                    Database.readFile(Database.getComputerPath());
+                    currentQuestionList = Database.getItList();
+                    Collections.shuffle(currentQuestionList);
+                    break;
+            }
+
+        }catch (NullPointerException e){
+            e.printStackTrace();
         }
     }
 
@@ -82,12 +95,13 @@ public class GameHandler<T> extends Thread {
         Response output = null;
 
         if (state == 0) {
-
-            output = new Response(Database.getCategories());
+            //System.out.println(tempPlayer.getSocket().getInetAddress().getHostAddress() + " in state 0");
+            output = new Response(new ArrayList(Database.getCategories()));
             state++;
 
 
         } else if (state == 1) {
+            //System.out.println(tempPlayer.getSocket().getInetAddress().getHostAddress() + " in state 1");
             output = new Response(currentQuestionList.get(questionIndex));
             currentQuestion++;
             questionIndex++;
@@ -97,8 +111,9 @@ public class GameHandler<T> extends Thread {
                 state++;
                 questionIndex = 0;
             }
-
+            //System.out.println(tempPlayer.getSocket().getInetAddress().getHostAddress() + " ending state " + state);
         } else if (state == 2) {
+            //System.out.println(tempPlayer.getSocket().getInetAddress().getHostAddress() + " in state 2");
             output = new Response(true);
 
             if (whosTurn.equals(player1)) {
@@ -151,4 +166,3 @@ public class GameHandler<T> extends Thread {
     }
 
 }
-
