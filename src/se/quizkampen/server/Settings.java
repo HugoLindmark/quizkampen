@@ -12,7 +12,7 @@ public class Settings {
     public Settings() {
         Properties properties = new Properties();
         try {
-            properties.load(new FileInputStream("se/quizkampen/server/info.properties"));
+            properties.load(new FileInputStream("src\\se\\quizkampen\\server\\info.properties"));
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }

@@ -1,10 +1,6 @@
 package se.quizkampen.server;
 
 import se.quizkampen.client.Player;
-import se.quizkampen.server.Database;
-import se.quizkampen.server.Question;
-import se.quizkampen.server.Response;
-import se.quizkampen.server.Settings;
 
 import java.net.Socket;
 import java.util.ArrayList;
