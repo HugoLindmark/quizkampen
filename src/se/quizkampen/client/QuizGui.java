@@ -26,7 +26,7 @@ public class QuizGui {
     private JButton alt2;
     private JButton alt3;
     private JButton alt4;
-    private JButton newGame;
+    private JButton exit;
 
     private ArrayList<JButton> buttons = new ArrayList<>();
 
@@ -173,12 +173,12 @@ public class QuizGui {
         result.setFont(textFont);
         result.setForeground(Color.white);
 
-        newGame = new JButton("Avsluta");
-        resultPanel.add(newGame, BorderLayout.SOUTH);
-        newGame.setBackground(Color.gray);
-        newGame.setForeground(Color.white);
-        newGame.setPreferredSize(new Dimension(100, 50));
-        newGame.addActionListener(e -> {
+        exit = new JButton("Avsluta");
+        resultPanel.add(exit, BorderLayout.SOUTH);
+        exit.setBackground(Color.gray);
+        exit.setForeground(Color.white);
+        exit.setPreferredSize(new Dimension(100, 50));
+        exit.addActionListener(e -> {
             System.exit(0);
         });
 
