@@ -1,4 +1,7 @@
-package se.nackademin;
+package se.quizkampen.client;
+
+import se.quizkampen.server.GameHandler;
+import se.quizkampen.server.Response;
 
 import java.io.BufferedReader;
 import java.io.IOException;

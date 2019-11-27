@@ -1,16 +1,12 @@
-package se.nackademin;
+package se.quizkampen.server;
 
-import javax.xml.crypto.Data;
 import java.io.*;
-import java.nio.file.Path;
-import java.nio.file.Paths;
 import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
 
 import static java.util.Arrays.asList;
 
-public class Database<T> {
+public class Database {
 
     private static String readQuestion;
     private static String rightAnswer;
@@ -34,10 +30,10 @@ public class Database<T> {
 
 
     // Creates filepath for the .txt files we read from to create our Database.
-    private static File moviePath = new File("src\\se\\nackademin\\movie.txt");
-    private static File animalPath = new File("src\\se\\nackademin\\animals.txt");
-    private static File computerPath = new File("src\\se\\nackademin\\it.txt");
-    private static File sportPath = new File("src\\se\\nackademin\\sports.txt");
+    private static File moviePath = new File("src\\se\\quizkampen\\Database\\movie.txt");
+    private static File animalPath = new File("src\\se\\quizkampen\\Database\\animals.txt");
+    private static File computerPath = new File("src\\se\\quizkampen\\Database\\it.txt");
+    private static File sportPath = new File("src\\se\\quizkampen\\Database\\sports.txt");
 
     // Getters for File paths.
     public static File getMoviePath() {

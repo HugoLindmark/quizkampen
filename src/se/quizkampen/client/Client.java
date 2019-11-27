@@ -1,4 +1,8 @@
-package se.nackademin;
+package se.quizkampen.client;
+
+import se.quizkampen.client.QuizGui;
+import se.quizkampen.server.Question;
+import se.quizkampen.server.Response;
 
 import java.io.IOException;
 import java.io.ObjectInputStream;
@@ -19,7 +23,7 @@ public class Client {
              ObjectInputStream inFromServer = new ObjectInputStream(socket.getInputStream())
         ) {
 
-            Response fromServer;
+            se.quizkampen.server.Response fromServer;
 
             System.out.println("Show waiting view");
             // call the categories

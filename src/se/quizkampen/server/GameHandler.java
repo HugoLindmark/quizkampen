@@ -1,12 +1,17 @@
-package se.nackademin;
+package se.quizkampen.server;
 
-import javax.xml.crypto.Data;
+import se.quizkampen.client.Player;
+import se.quizkampen.server.Database;
+import se.quizkampen.server.Question;
+import se.quizkampen.server.Response;
+import se.quizkampen.server.Settings;
+
 import java.net.Socket;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class GameHandler <T> extends Thread {
+public class GameHandler extends Thread {
     private int TOTALAMOUNTOFROUNDS;
     private int TOTALAMOUNTOFQUESTIONSPERROUND;
 

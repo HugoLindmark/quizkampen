@@ -1,4 +1,4 @@
-package se.nackademin;
+package se.quizkampen.server;
 
 import java.io.FileInputStream;
 import java.io.IOException;
@@ -12,7 +12,7 @@ public class Settings {
     public Settings() {
         Properties properties = new Properties();
         try {
-            properties.load(new FileInputStream("src/se/nackademin/info.properties"));
+            properties.load(new FileInputStream("se/quizkampen/server/info.properties"));
         } catch (IOException e) {
             System.out.println(e.getMessage());
         }

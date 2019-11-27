@@ -1,4 +1,4 @@
-package se.nackademin;
+package se.quizkampen.client;
 
 import javax.swing.*;
 import java.awt.*;
