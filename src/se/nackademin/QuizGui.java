@@ -32,13 +32,13 @@ public class QuizGui {
 
     private ArrayList<JButton> buttons = new ArrayList<>();
 
-    private Font textFont = new Font(Font.MONOSPACED, Font.CENTER_BASELINE, 14);
+    private Font textFont = new Font(Font.MONOSPACED, Font.CENTER_BASELINE, 23);
+    private Font questiontFont = new Font(Font.MONOSPACED, Font.CENTER_BASELINE, 15);
 
     private String correctAnswer;
-
     private String response;
-    public boolean responded = false;
 
+    private boolean responded = false;
 
     public QuizGui() {
         buildGui();
@@ -46,7 +46,7 @@ public class QuizGui {
 
     /* Builds and shows the gui when called */
     private void buildGui() {
-        window = new JFrame("Quizzkampen! - Demo Gui");
+        window = new JFrame("Quizzkampen!");
         window.setSize(500,400);
         window.setLocationRelativeTo(null);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -123,9 +123,9 @@ public class QuizGui {
         gamePanel.setBackground(Color.darkGray);
         gamePanel.setLayout(new BorderLayout());
 
-        question = new JLabel("Empty", JLabel.CENTER);
+        question = new JLabel("Missingo", JLabel.CENTER);
         gamePanel.add(question);
-        question.setFont(textFont);
+        question.setFont(questiontFont);
         question.setForeground(Color.white);
 
         gameButtonPanel = new JPanel();
@@ -156,7 +156,6 @@ public class QuizGui {
         alt3.setBackground(Color.gray);
         alt3.addActionListener(e ->{
             checkButton(alt3);
-
         });
 
         alt4 = new JButton();
@@ -171,55 +170,18 @@ public class QuizGui {
         resultPanel.setLayout(new BorderLayout());
         resultPanel.setBackground(Color.darkGray);
 
-        result = new JLabel("Empty", JLabel.CENTER);
+        result = new JLabel("", JLabel.CENTER);
         resultPanel.add(result);
         result.setFont(textFont);
         result.setForeground(Color.white);
 
-        newGame = new JButton("Starta nytt spel!");
+        newGame = new JButton("Avsluta");
         resultPanel.add(newGame, BorderLayout.SOUTH);
         newGame.setBackground(Color.gray);
         newGame.setForeground(Color.white);
         newGame.setPreferredSize(new Dimension(100, 50));
         newGame.addActionListener(e -> {
-            switchTo(lobbyPanel);
-        });
-
-        window.addWindowListener(new WindowListener() {
-            @Override
-            public void windowOpened(WindowEvent e) {
-
-            }
-
-            @Override
-            public void windowClosing(WindowEvent e) {
-
-            }
-
-            @Override
-            public void windowClosed(WindowEvent e) {
-                //TODO
-            }
-
-            @Override
-            public void windowIconified(WindowEvent e) {
-
-            }
-
-            @Override
-            public void windowDeiconified(WindowEvent e) {
-
-            }
-
-            @Override
-            public void windowActivated(WindowEvent e) {
-
-            }
-
-            @Override
-            public void windowDeactivated(WindowEvent e) {
-
-            }
+            System.exit(0);
         });
 
         //Adds the basePanel after initialization
@@ -262,7 +224,6 @@ public class QuizGui {
         basePanel.add(target);
         basePanel.revalidate();
         basePanel.repaint();
-       // basePanel.updateUI();
         resetButtons();
         resetRespons();
     }
@@ -272,7 +233,6 @@ public class QuizGui {
      * @param pressedButton the pressed button
      */
     private void checkButton(JButton pressedButton) {
-        System.out.println("Answer button has been clicked");
         responded = true;
         response = pressedButton.getText();
         if(response.equals(correctAnswer)) {
@@ -292,7 +252,6 @@ public class QuizGui {
             }
         }
     }
-
 
     /**
      * Shows the result of the game when called
