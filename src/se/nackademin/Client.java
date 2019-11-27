@@ -64,10 +64,12 @@ public class Client {
                 if (!fromServer.getWaitingView()) {
                     // get response and while loop hasresponded == true
                     while (!gui.hasResponded()) {
-                        System.out.println("i whilen");
-
-                    }
-                    System.out.println("klient has responded");
+                        try {
+                            Thread.sleep(100);
+                        }catch (InterruptedException e){
+                            e.printStackTrace();
+                        }
+                        }
                     if (gui.hasResponded()) {
                         String toServer = gui.getResponse();
                         System.out.println(toServer);
@@ -81,13 +83,12 @@ public class Client {
                             if (toServer.equals(fromServer.getQuestion().getRightAnswer())) {
                                 outToServer.println("rätt");
                             } else {
-                                outToServer.println(toServer);
+                                outToServer.println("fel");
                                 System.out.println("Skicka QuizGUI response to server");
                             }
                         } else {
                             outToServer.println(toServer);
                         }
-
                     }
                 }
             }
@@ -101,5 +102,4 @@ public class Client {
             System.out.println(e.getMessage());
         }
     }
-
 }

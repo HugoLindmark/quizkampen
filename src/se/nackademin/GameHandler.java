@@ -33,7 +33,6 @@ public class GameHandler <T> extends Thread {
         TOTALAMOUNTOFQUESTIONSPERROUND = Integer.parseInt(gameSettings.getNumberOfQuestions());
         TOTALAMOUNTOFROUNDS = Integer.parseInt(gameSettings.getNumberOfRounds());
         MaxQuestionsPerGame = ((TOTALAMOUNTOFROUNDS * TOTALAMOUNTOFQUESTIONSPERROUND) * 2);
-        //currentQuestionList = new ArrayList<>();
     }
 
     @Override
@@ -95,13 +94,11 @@ public class GameHandler <T> extends Thread {
         Response output = null;
 
         if (state == 0) {
-            //System.out.println(tempPlayer.getSocket().getInetAddress().getHostAddress() + " in state 0");
             output = new Response(new ArrayList(Database.getCategories()));
             state++;
 
 
         } else if (state == 1) {
-            //System.out.println(tempPlayer.getSocket().getInetAddress().getHostAddress() + " in state 1");
             output = new Response(currentQuestionList.get(questionIndex));
             currentQuestion++;
             questionIndex++;
@@ -111,9 +108,7 @@ public class GameHandler <T> extends Thread {
                 state++;
                 questionIndex = 0;
             }
-            //System.out.println(tempPlayer.getSocket().getInetAddress().getHostAddress() + " ending state " + state);
         } else if (state == 2) {
-            //System.out.println(tempPlayer.getSocket().getInetAddress().getHostAddress() + " in state 2");
             output = new Response(true);
 
             if (whosTurn.equals(player1)) {
@@ -132,9 +127,10 @@ public class GameHandler <T> extends Thread {
 
             if (currentQuestion == (TOTALAMOUNTOFQUESTIONSPERROUND * 2)) {
                 checkPlayersScore();
+                currentQuestionList = null;
                 state = 0;
                 questionIndex = 0;
-                currentQuestionList = null;
+
 
             } else if (currentQuestion == MaxQuestionsPerGame) {
                 checkPlayersScore();

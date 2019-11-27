@@ -1,14 +1,14 @@
-I Bibeln lurar en orm någon att plocka frukt från Kunskapens träd, Vem blir lurad?
-Eva
-Maria Magdalena
-Kain
-Eva-Lena
-Den som blir biten av en giftig orm kan få en sorts motgift. Vad kallas det?
+Vanligaste husdjuret?
+Katt
+Hund
+Kanin
+Fågel
+Vad kallas motgift mot ormbett?
 Serum
 Sepia
 Selen
 Saliv
-När ormar växer så byter de skinn. Vad kallas det?
+När ormar växer så byter de skinn, Vad kallas det?
 Att ömsa skinn
 Att garva skinn
 Att fälla skinn
@@ -18,3 +18,13 @@ Kulting
 Yngel
 Föl
 Kattunge
+Vem är skogens konung?
+Älgen
+Haren
+Myran
+Björnen
+Rävar tillhör vilket familj?
+Hunddjur
+Kattdjur
+Gnagare
+Fågel

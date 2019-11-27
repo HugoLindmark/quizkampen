@@ -21,6 +21,7 @@ public class Question implements Serializable {
     }
 
     public String getQuestion() {
+
         return question;
     }
 

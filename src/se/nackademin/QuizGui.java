@@ -32,7 +32,7 @@ public class QuizGui {
 
     private ArrayList<JButton> buttons = new ArrayList<>();
 
-    private Font textFont = new Font(Font.MONOSPACED, Font.CENTER_BASELINE, 23);
+    private Font textFont = new Font(Font.MONOSPACED, Font.CENTER_BASELINE, 14);
 
     private String correctAnswer;
 
@@ -71,7 +71,7 @@ public class QuizGui {
         categoryPanel.setBackground(Color.darkGray);
         categoryPanel.setLayout(new BorderLayout());
 
-        categoryMessage = new JLabel("Choose category!", JLabel.CENTER);
+        categoryMessage = new JLabel("Välj kategori!", JLabel.CENTER);
         categoryPanel.add(categoryMessage);
         categoryMessage.setFont(textFont);
         categoryMessage.setForeground(Color.white);

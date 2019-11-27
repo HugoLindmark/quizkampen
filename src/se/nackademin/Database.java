@@ -35,7 +35,7 @@ public class Database<T> {
 
     // Creates filepath for the .txt files we read from to create our Database.
     private static File moviePath = new File("src\\se\\nackademin\\movie.txt");
-    private static File animalPath = new File("src\\se\\nackademin\\snakes.txt");
+    private static File animalPath = new File("src\\se\\nackademin\\animals.txt");
     private static File computerPath = new File("src\\se\\nackademin\\it.txt");
     private static File sportPath = new File("src\\se\\nackademin\\sports.txt");
 
@@ -85,11 +85,10 @@ public class Database<T> {
                 } else if (file.getAbsolutePath().equals(computerPath.getAbsolutePath())) {
                     itList.add(question);
                     Database.saveItList(itList);
-                } else
-                    file.getAbsolutePath().equals(sportPath.getAbsolutePath());
-                sportList.add(question);
-                Database.saveSportList(sportList);
-
+                } else {
+                    sportList.add(question);
+                    Database.saveSportList(sportList);
+                }
             }
         } catch (FileNotFoundException e) {
             System.out.println("File not found");
